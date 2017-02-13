@@ -1,7 +1,7 @@
 FROM php:5.6.25-zts
 
 ENV EBOT_HOME="/ebot" \
-    TIMEZONE="Europe/Paris"
+    TIMEZONE="America/Los_Angeles"
 
 RUN apt-get update -y && apt-get install -y netcat git nodejs npm php5-curl && apt-get clean && \
     mkdir ${EBOT_HOME} && \
@@ -15,7 +15,7 @@ RUN apt-get update -y && apt-get install -y netcat git nodejs npm php5-curl && a
     php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
     php composer-setup.php --install-dir=/usr/bin && \
     php -r "unlink('composer-setup.php');" && \
-    git clone https://github.com/deStrO/eBot-CSGO.git "$EBOT_HOME" && \
+    git clone https://github.com/TheShockTop/eBot-CSGO.git "$EBOT_HOME" && \
     cd "$EBOT_HOME" && git checkout "master" && \
     /usr/local/bin/php /usr/bin/composer.phar install && \
     cp "$EBOT_HOME"/config/config.ini.smp "$EBOT_HOME"/config/config.ini
